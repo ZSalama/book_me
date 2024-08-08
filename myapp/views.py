@@ -4,3 +4,6 @@ from django.shortcuts import render
 
 def index(request):
 	return render(request, "myapp/home.html")
+
+def bootstrap(request):
+	return render(request, 'myapp/bootstrap.html')
