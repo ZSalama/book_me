@@ -144,3 +144,8 @@ MIDDLEWARE += ['csp.middleware.CSPMiddleware']
 # allow browsers to load normalize.css from cdn.jsdelivr.net
 
 CSP_STYLE_SRC = ["'self'", "cdn.jsdelivr.net"]
+
+# redirect URL after successful login/logout
+
+LOGIN_REDIRECT_URL = '/account/'
+LOGOUT_REDIRECT_URL = '/'
