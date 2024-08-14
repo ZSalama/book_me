@@ -16,12 +16,20 @@ class Appointment(models.Model):
 		(time(16, 0), '4:00 PM'),
 	]
 
+	COURT_CHOICES = [
+		(1, 'Court 1'),
+		(2, 'Court 2'),
+		(3, 'Court 3'),
+		(4, 'Court 4'),
+	]
+
 	appointment_id = models.AutoField(primary_key=True)
 	date = models.DateField(default=timezone.now)
-	time = models.TimeField(choices=TIME_CHOICES, default=timezone.now)
-	court = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(4)])
+	time = models.TimeField(choices=TIME_CHOICES, default=TIME_CHOICES[0][0])
+	court = models.IntegerField(choices=COURT_CHOICES)
 	notes = models.TextField(blank=True, null=True)
 	member = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+	is_booked = models.BooleanField(default=False)
 
 	def __str__(self):
 		return f"Appointment {self.appointment_id} on {self.date} at {self.time} (Court {self.court})"
