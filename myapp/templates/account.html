@@ -12,8 +12,19 @@
     <p><strong>Username:</strong> {{ user.username }}</p>
     <p><strong>Email:</strong> {{ user.email }}</p>
 
+    <p>
+	<a href="my_bookings/">View Bookings</a>
+    </p>
+
+    <p>
+	<a href="https://www.bookmethisasap.com/appointments/">New Booking</a>
+    </p>
+
     <!-- Link to logout -->
-    <a href="{% url 'logout' %}">Logout</a>
+    <form action="{% url 'logout' %}" method="post">
+	{% csrf_token %}
+	<button type="submit">Log out</button>
+    </form>
 </body>
 </html>
 
