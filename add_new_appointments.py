@@ -1,20 +1,13 @@
 import os
-import sys
-
-
-venv_path = 'env/bin/activate'
-with open(venv_path)as f:
-	exec(f.read(), {'__file__': venv_path})
-
-import django
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'project.settings')
+import django
 django.setup()
 
 from django.utils import timezone
 from datetime import timedelta
 from datetime import time
-from myapp.models import Appointment  # Adjust 'myapp' to your app name
+from myapp.models import Appointment
 
 
 # Get the current date and time, and calculate one week into the future
